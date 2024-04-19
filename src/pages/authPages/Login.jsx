@@ -54,8 +54,8 @@ const Login = () => {
   // const [email_id, setEmail_id] = useState('');
   // const [password, setPassword] = useState('');
 
-  const dispatch = useDispatch();
-  const User = useSelector((state) => state.user);
+  // const dispatch = useDispatch();
+  // const User = useSelector((state) => state.user);
 // console.log(User.user.id)
   const {
     control,
@@ -65,7 +65,7 @@ const Login = () => {
   } = useForm({
     resolver: zodResolver(schema),
   });
-  const { mutate, isLoading, message } = useLogin();
+  // const { mutate, isLoading, message } = useLogin();
 
   const handleLogin = (data) => {
     const { email_id, password, user_type } = data;
@@ -75,69 +75,78 @@ const Login = () => {
       password,
       user_type,
     };
+    localStorage.setItem(
+      "user_data",
+      JSON.stringify({
+        userData
+        // // id: data?.data?.id,
+        // user_email_id: data?.data?.email_id,
+        // user_type: data?.data?.user_type,
+      })
+    );
 
-    // Check if both email/password and user type are provided
-    if (!email_id || !password || user_type === "") {
-      toast.error("Please provide both email/password and select a user type");
-      return;
-    }
+    // // Check if both email/password and user type are provided
+    // if (!email_id || !password || user_type === "") {
+    //   toast.error("Please provide both email/password and select a user type");
+    //   return;
+    // }
 
-    mutate(userData, {
-      onSuccess: (responseData) => {
-        const data = responseData?.data;
-        // console.log(data);
-        if (!data?.status) {
-          let errorMessage = data?.message?.toLowerCase();
-          if (errorMessage.includes("verify")) {
-            setError("email_id", {
-              type: "server",
-              message: "Entered email is not verified yet",
-            });
-            setError("password", {
-              type: "server",
-              message: "Entered email is not verified yet",
-            });
-            console.log("Verified email");
-            return;
-          }
-          // Display error message when login fails
-          toast.error("You entered incorrect Email Or Password");
-          return;
-        }
-        const user = {
-          id: data?.data?.id,
-          user_email_id: data?.data?.email_id,
-          user_type: data?.data?.user_type,
-        };
-        console.log(user);
-        localStorage.setItem(
-          "user_data",
-          JSON.stringify({
-            id: data?.data?.id,
-            user_email_id: data?.data?.email_id,
-            user_type: data?.data?.user_type,
-          })
-        );
+    // mutate(userData, {
+    //   onSuccess: (responseData) => {
+    //     const data = responseData?.data;
+    //     // console.log(data);
+    //     if (!data?.status) {
+    //       let errorMessage = data?.message?.toLowerCase();
+    //       if (errorMessage.includes("verify")) {
+    //         setError("email_id", {
+    //           type: "server",
+    //           message: "Entered email is not verified yet",
+    //         });
+    //         setError("password", {
+    //           type: "server",
+    //           message: "Entered email is not verified yet",
+    //         });
+    //         console.log("Verified email");
+    //         return;
+    //       }
+    //       // Display error message when login fails
+    //       toast.error("You entered incorrect Email Or Password");
+    //       return;
+    //     }
+    //     const user = {
+    //       id: data?.data?.id,
+    //       user_email_id: data?.data?.email_id,
+    //       user_type: data?.data?.user_type,
+    //     };
+    //     console.log(user);
+    //     localStorage.setItem(
+    //       "user_data",
+    //       JSON.stringify({
+    //         id: data?.data?.id,
+    //         user_email_id: data?.data?.email_id,
+    //         user_type: data?.data?.user_type,
+    //       })
+    //     );
 
-        dispatch(loginSuccess(user));
+    //     dispatch(loginSuccess(user));
 
-        // Conditional navigation based on user type
-        if (user_type === 0) {
-          navigate("/admin");
-        } else if (user_type === 2) {
-          navigate("/provider");
-        } else {
-          //---
-          console.log(".......");
-        }
-        toast.success("Login successful!");
-      },
-      onError: (error) => {
-        console.error("Error during login:", error);
+    //     // Conditional navigation based on user type
+    //     if (user_type === 0) {
+    //       navigate("/admin");
+    //     } else if (user_type === 2) {
+    //       navigate("/provider");
+    //     } else {
+    //       //---
+    //       console.log(".......");
+    //     }
+    //     toast.success("Login successful!");
+    //   },
+    //   onError: (error) => {
+    //     console.error("Error during login:", error);
 
-        toast.error("An error occurred during login. Please try again later.");
-      },
-    });
+    //     toast.error("An error occurred during login. Please try again later.");
+    //   },
+    // });
   };
 
   const textFieldStyles = (
