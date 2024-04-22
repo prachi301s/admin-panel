@@ -7,7 +7,7 @@ const ProtectedRoute = ({ children }) => {
   const { user } = useUser();
   return user === null ? (
     <>
-      <Navigate replace to="/login" />
+      {/* <Navigate replace to="/login" /> */}
     </>
   ) : (
     children

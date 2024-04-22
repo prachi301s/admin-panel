@@ -20,7 +20,7 @@ import {
 
 import { useQueryClient } from "react-query";
 
-import { useAllBooking } from "../../hooks/booking/useBooking";
+// import { useAllBooking } from "../../hooks/booking/useBooking";
 
 import { useTheme } from "@emotion/react";
 import { useState } from "react";
@@ -29,21 +29,21 @@ import ReactDatePicker from "react-datepicker";
 const AdminBookingTable = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
 
-  const { data } = useAllBooking();
+  // const { data } = useAllBooking();
   const theme = useTheme();
   const [rows, setRows] = useState([]);
   // const [isCalendarVisible, setIsCalendarVisible] = useState(false);
-  console.log(data);
+  // console.log(data);
   // const { message,success, mutate: delBanners } = useDeleteBanner();
   // const queryClient = useQueryClient()
 
   // console.log(data);
 
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
   //   console.log('data.....', data);
 
   const handleEdit = (id) => {

@@ -18,7 +18,7 @@ import { Badge } from "@mui/material";
 
 import { useQueryClient } from "react-query";
 import { useEffect, useState } from "react";
-import { useAllBooking } from "../../../hooks/booking/useBooking";
+// import { useAllBooking } from "../../../hooks/booking/useBooking";
 import { useNavigate } from "react-router-dom";
 
 const DashboardBookingTable = ({
@@ -30,7 +30,7 @@ const DashboardBookingTable = ({
 }) => {
   const [tableData, setTableData] = useState([]);
   const queryClient = useQueryClient();
-  const { isLoading, data } = useAllBooking();
+  // const { isLoading, data } = useAllBooking();
   const {rows,setRows}=useState([]);
   const navigate = useNavigate();
   const handleView = () => {
@@ -42,11 +42,11 @@ const DashboardBookingTable = ({
   //   queryClient.refetchQueries(['all_booking']);
   // }
 
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
   // console.log(tableData)
   // const mappedBookings = tableData.map((booking) => ({
   //   id: booking.id,

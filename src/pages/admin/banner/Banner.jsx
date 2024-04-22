@@ -23,53 +23,53 @@ import Iconify from "../../../../src/components/iconify/index";
 // import Updates from "./Updates";
 
 // import { useEditBanner } from "src/hooks/banners/useEditBanner";
-import { useBanner } from "../../../../src/hooks/banners/useBanner";
-import useDeleteBanner from "../../../../src/hooks/banners/useDeleteBanner";
-import { useEditBanner } from "../../../../src/hooks/banners/useEditBanner";
-import UpdateBannerModal from "../../../components/modal/UpdateBannerModal"
+// import { useBanner } from "../../../../src/hooks/banners/useBanner";
+// import useDeleteBanner from "../../../../src/hooks/banners/useDeleteBanner";
+// import { useEditBanner } from "../../../../src/hooks/banners/useEditBanner";
+// import UpdateBannerModal from "../../../components/modal/UpdateBannerModal"
 
 const Banner = () => {
   const [rows, setRows] = useState([]);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isEditMode, setIsEditMode] = useState(false);
 
-  const { data } = useBanner();
-  const { message, success, mutate: delBanners } = useDeleteBanner();
-  const { mutate: getEditBanner } = useEditBanner();
+  // const { data } = useBanner();
+  // const { message, success, mutate: delBanners } = useDeleteBanner();
+  // const { mutate: getEditBanner } = useEditBanner();
   const queryClient = useQueryClient();
 
   // console.log(data);
 
   const theme = useTheme();
 
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
 
   const handleEdit = (id) => {
     setIsEditMode(true);
     setIsModalVisible(true);
   };
 
-  const handleDelete = (id) => {
-    delBanners(id, {
-      onSuccess: () => {
-        setRows(rows.filter((row) => row.id !== id));
-        if (message && message.success) {
-          message.success(`Item with ID ${id} has been deleted`);
-        }
-        queryClient.invalidateQueries("all_banners");
-      },
-      onError: (error) => {
-        console.error("Error deleting feature:", error);
-        if (message && message.error) {
-          message.error("Failed to delete feature");
-        }
-      },
-    });
-  };
+  // const handleDelete = (id) => {
+  //   delBanners(id, {
+  //     onSuccess: () => {
+  //       setRows(rows.filter((row) => row.id !== id));
+  //       if (message && message.success) {
+  //         message.success(`Item with ID ${id} has been deleted`);
+  //       }
+  //       queryClient.invalidateQueries("all_banners");
+  //     },
+  //     onError: (error) => {
+  //       console.error("Error deleting feature:", error);
+  //       if (message && message.error) {
+  //         message.error("Failed to delete feature");
+  //       }
+  //     },
+  //   });
+  // };
 
   // const handleCreate = () => {
   //   console.log('hello');

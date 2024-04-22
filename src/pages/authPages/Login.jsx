@@ -33,7 +33,7 @@ import { Controller, useForm } from "react-hook-form";
 import { useDispatch, useSelector } from "react-redux";
 
 import { toast } from "react-toastify";
-import useLogin from "../../hooks/auth/useLogin";
+// import useLogin from "../../hooks/auth/useLogin";
 import {loginSuccess } from "../../store/useAction";
 import { schema } from "../../schema/auth_schema/LoingSchema";
 import Iconify from "../../components/iconify/index";
@@ -76,7 +76,7 @@ const Login = () => {
       user_type,
     };
     localStorage.setItem(
-      "user_data",
+      "user",
       JSON.stringify({
         userData
         // // id: data?.data?.id,
@@ -257,7 +257,7 @@ const Login = () => {
                   LEGAL CARE
                 </Typography>
 
-                <Controller
+                {/* <Controller
                   name="user_type"
                   control={control}
                   defaultValue=""
@@ -309,7 +309,7 @@ const Login = () => {
                       </Select>
                     </FormControl>
                   )}
-                />
+                /> */}
                 <Controller
                   name="email_id"
                   control={control}

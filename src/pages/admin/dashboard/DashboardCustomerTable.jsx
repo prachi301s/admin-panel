@@ -16,7 +16,7 @@ import { primary } from '../../../../src/theme/palette';
 import { DataGrid } from '@mui/x-data-grid';
 // import { useAllCustomer } from 'src/hooks/customer/useCustomer';
 import { useEffect } from 'react';
-import { useAllCustomer } from '../../../hooks/customer/useCustomer';
+// import { useAllCustomer } from '../../../hooks/customer/useCustomer';
 import { useNavigate } from 'react-router-dom';
 
 // ------------------------------------------------------------------------

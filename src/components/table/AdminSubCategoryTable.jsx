@@ -3,14 +3,14 @@ import TableDataGrid from "../common/customtabels/TableDataGrid";
 import { Badge, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@emotion/react";
 import AddSubCategoryModal from "../modal/AddSubCategoryModal";
-import { useGetAllSubCategory } from "../../hooks/subcategories/useAllSubCategory";
+// import { useGetAllSubCategory } from "../../hooks/subcategories/useAllSubCategory";
 
 const AdminSubCategoryTable = () => {
   const { theme } = useTheme();
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [rows, setRows] = useState();
-  const { data } = useGetAllSubCategory();
-  console.log(data);
+  // const { data } = useGetAllSubCategory();
+  // console.log(data);
   const handleCreate = () => {
     // setIsEditMode(false);
     setIsModalVisible(true);
@@ -19,11 +19,11 @@ const AdminSubCategoryTable = () => {
   const handleCloseModal = () => {
     setIsModalVisible(false);
   };
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
   const columns = [
     {
       field: "id",

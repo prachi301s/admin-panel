@@ -25,7 +25,7 @@ import styled from "@emotion/styled";
 // import Updates from '../banner/Updates';
 
 import TableDataGrid from "../common/customtabels/TableDataGrid";
-import { useGetAllCategory } from "../../hooks/categories/useGetAllCategory";
+// import { useGetAllCategory } from "../../hooks/categories/useGetAllCategory";
 import AddCategoryModal from "../modal/AddCategoryModal";
 // import AddCategoryModal from '../../../components/modal/AddCategoryModal';
 
@@ -45,17 +45,17 @@ const AdminCategoryTable = () => {
   const theme = useTheme();
   // const { message,success, mutate: delBanners } = useDeleteBanner();
   // const {  mutate: getEditBanner } = useEditBanner();
-  const { data } = useGetAllCategory();
+  // const { data } = useGetAllCategory();
 
   const queryClient = useQueryClient();
 
-  console.log("datataat", data);
+  // console.log("datataat", data);
 
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
 
   //   const handleEdit = (id) => {
   //     setIsEditMode(true);
@@ -103,14 +103,14 @@ const AdminCategoryTable = () => {
       ),
       width: 160,
       align: "left",
-      valueGetter: (params) => params.row.category_name,
-      valueGetter: (params) => (
-        <>
-          <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
-            {params.row.category_name ||"-"}
-          </Typography>
-        </>
-      ),
+    
+      // valueGetter: (params) => (
+      //   <>
+      //     <Typography variant="body1" sx={{ textTransform: "capitalize" }}>
+      //       {params.row.category_name ||"-"}
+      //     </Typography>
+      //   </>
+      // ),
     },
     {
       field: "description",
@@ -196,13 +196,13 @@ const AdminCategoryTable = () => {
           <IconButton
             style={{ border: "none", color: theme.palette.secondary.dark }}
             aria-label="edit"
-            onClick={() => handleEdit(params.row.id)}
+            // onClick={() => handleEdit(params.row.id)}
           >
             <Icon icon="mdi:edit-box" />
           </IconButton>
           <IconButton
             aria-label="delete"
-            onClick={() => handleDelete(params.row.id)}
+            // onClick={() => handleDelete(params.row.id)}
           >
             <Icon icon="mdi:delete" />
           </IconButton>

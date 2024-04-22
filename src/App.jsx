@@ -1,6 +1,6 @@
 import "./App.css";
 import ThemeProvider from "./theme";
-import { PrimaryRoutes, SecondaryRoutes } from "./routes/MainRoutes";
+// import { PrimaryRoutes, SecondaryRoutes } from "./routes/MainRoutes";
 import { useDispatch } from "react-redux";
 import { useUser } from "./store/StateProvider";
 import { useEffect } from "react";
