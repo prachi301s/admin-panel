@@ -23,7 +23,7 @@ import { useQueryClient } from "react-query";
 import styled from "@emotion/styled";
 // import { useGetAllCategory } from "../../../hooks/categories/useGetAllCategory";
 import TableDataGrid from "../../../../src/components/common/customtabels/TableDataGrid";
-import ServiceModal from "../../modal/ServicesModal";
+// import ServiceModal from "../../modal/ServicesModal";
 // import { useAllServices } from "../../../../src/hooks/services/useServices";
 
 const StyledSwitch = styled(Switch)({
@@ -42,7 +42,7 @@ const ServicesTable = () => {
   // const [handleAdd, setHandleAdd] = useState();
   const theme = useTheme();
 
-  const { data } = useAllServices();
+  // const { data } = useAllServices();
   // const { message,success, mutate: delBanners } = useDeleteBanner();
   // const {  mutate: getEditBanner } = useEditBanner();
   const queryClient = useQueryClient();
@@ -403,14 +403,14 @@ const ServicesTable = () => {
           setIsModalVisible={setIsModalVisible}
         />
       )} */}
-      {isModalVisible && (
+      {/* {isModalVisible && (
         <ServiceModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
           // isEditMode={isEditMode}
           handleCloseModal={handleCloseModal}
         />
-      )}
+      )} */}
     </>
   );
 };

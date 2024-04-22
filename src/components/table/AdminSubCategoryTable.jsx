@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import TableDataGrid from "../common/customtabels/TableDataGrid";
 import { Badge, IconButton, Typography } from "@mui/material";
 import { useTheme } from "@emotion/react";
-import AddSubCategoryModal from "../modal/AddSubCategoryModal";
+// import AddSubCategoryModal from "../modal/AddSubCategoryModal";
 // import { useGetAllSubCategory } from "../../hooks/subcategories/useAllSubCategory";
 
 const AdminSubCategoryTable = () => {
@@ -178,12 +178,12 @@ const AdminSubCategoryTable = () => {
         />
       </div>
 
-      {isModalVisible && (
+      {/* {isModalVisible && (
         <AddSubCategoryModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
         />
-      )}
+      )} */}
     </>
   );
 };

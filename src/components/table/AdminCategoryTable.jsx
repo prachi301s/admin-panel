@@ -26,7 +26,7 @@ import styled from "@emotion/styled";
 
 import TableDataGrid from "../common/customtabels/TableDataGrid";
 // import { useGetAllCategory } from "../../hooks/categories/useGetAllCategory";
-import AddCategoryModal from "../modal/AddCategoryModal";
+// import AddCategoryModal from "../modal/AddCategoryModal";
 // import AddCategoryModal from '../../../components/modal/AddCategoryModal';
 
 const StyledSwitch = styled(Switch)({
@@ -224,12 +224,12 @@ const AdminCategoryTable = () => {
         buttonOnClick={handleCreate}
       />
 
-      {isModalVisible && (
+      {/* {isModalVisible && (
         <AddCategoryModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
         />
-      )}
+      )} */}
       {/* {isModalVisible && (
         <Updates
           isModalVisible={isModalVisible}

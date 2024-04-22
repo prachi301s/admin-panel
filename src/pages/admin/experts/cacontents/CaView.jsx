@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import { useQueryClient } from 'react-query';
 import { Navigate, useNavigate } from 'react-router-dom';
-import { useGetAllCategory } from '../../../../hooks/categories/useGetAllCategory.js';
+// import { useGetAllCategory } from '../../../../hooks/categories/useGetAllCategory.js';
 
 
 export default function CaView() {
@@ -19,18 +19,18 @@ export default function CaView() {
   const theme = useTheme();
   const navigate = useNavigate();
 
-  const { data } = useGetAllCategory();
+  // const { data } = useGetAllCategory();
   // const { message,success, mutate: delBanners } = useDeleteBanner();
   // const {  mutate: getEditBanner } = useEditBanner();
   const queryClient = useQueryClient();
 
   // console.log('datataat', data);
 
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
 
   const handleView = () => {
     navigate('/admin/ca-profile-view');

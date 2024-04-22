@@ -14,7 +14,7 @@ import {
 import { useEffect, useState } from "react";
 import { useQueryClient } from "react-query";
 import TableDataGrid from "../../../../components/common/customtabels/TableDataGrid";
-import { useGetAllCategory } from "../../../../hooks/categories/useGetAllCategory.js";
+// import { useGetAllCategory } from "../../../../hooks/categories/useGetAllCategory.js";
  import TableSearchBar from "../../../../components/common/customtabels/TableSearchBar";
 // import { useGetAllCategory } from "src/hooks/categories/useGetAllCategory";
 
@@ -24,17 +24,17 @@ export default function LawyerView() {
   const [verify, setVerify] = useState("");
   const theme = useTheme();
 
-  const { data } = useGetAllCategory();
+  // const { data } = useGetAllCategory();
 
   const queryClient = useQueryClient();
 
   // console.log('datataat', data);
 
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
 
   const handleEdit = (id) => {
     setIsEditMode(true);

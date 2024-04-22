@@ -15,13 +15,13 @@ const AdminCustomersTable = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [rows, setRows] = useState([]);
   // const { data } = useAllCustomer();
-  const { mutate: viewCustomerById } = useCustomerById();
+  // const { mutate: viewCustomerById } = useCustomerById();
   const theme = useTheme();
   // console.log(data);
   // const { message, success, mutate: delBanners } = useDeleteBanner();
   const queryClient = useQueryClient();
 
-  console.log(data);
+  // console.log(data);
 
   // useEffect(() => {
   //   if (data?.data?.data?.rows) {

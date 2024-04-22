@@ -22,11 +22,11 @@ import { useQueryClient } from "react-query";
 import { useTheme } from "@emotion/react";
 import { useState } from "react";
 import TableDataGrid from "../../common/customtabels/TableDataGrid";
-import { useAllBooking } from "../../../hooks/booking/useBooking";
+// import { useAllBooking } from "../../../hooks/booking/useBooking";
 const CustomerCallDetailsTable = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   // const [rows, setRows] = useState([]);
-  const { data } = useAllBooking();
+  // const { data } = useAllBooking();
   const theme = useTheme();
   // console.log(data);
   // const { message,success, mutate: delBanners } = useDeleteBanner();
