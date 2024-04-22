@@ -9,48 +9,48 @@ import { useQueryClient } from "react-query";
 import { useTheme } from "@emotion/react";
 import { useState } from "react";
 import TableDataGrid from "../../common/customtabels/TableDataGrid";
-import { useAllCustomer } from "../../../../src/hooks/customer/useCustomer";
-import { useCustomerById } from "../../../../src/hooks/customer/useCustomerById";
+// import { useAllCustomer } from "../../../../src/hooks/customer/useCustomer";
+// import { useCustomerById } from "../../../../src/hooks/customer/useCustomerById";
 const AdminCustomersTable = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [rows, setRows] = useState([]);
-  const { data } = useAllCustomer();
+  // const { data } = useAllCustomer();
   const { mutate: viewCustomerById } = useCustomerById();
   const theme = useTheme();
-  console.log(data);
+  // console.log(data);
   // const { message, success, mutate: delBanners } = useDeleteBanner();
   const queryClient = useQueryClient();
 
   console.log(data);
 
-  useEffect(() => {
-    if (data?.data?.data?.rows) {
-      setRows(data?.data?.data?.rows);
-    }
-  }, [data?.data?.data?.rows]);
+  // useEffect(() => {
+  //   if (data?.data?.data?.rows) {
+  //     setRows(data?.data?.data?.rows);
+  //   }
+  // }, [data?.data?.data?.rows]);
   //   console.log('data.....', data);
 
-  const handleView = (id) => {
-    console.log(`Editing row with ID ${id}`);
-    const customerData = {
-      customer_id: id,
-    };
-    console.log(customerData);
+  // const handleView = (id) => {
+  //   console.log(`Editing row with ID ${id}`);
+  //   const customerData = {
+  //     customer_id: id,
+  //   };
+  //   console.log(customerData);
 
-    {
-      viewCustomerById(customerData, {
-        onSuccess: (data) => {
-          console.log("Update data successfully");
-          queryClient.refetchQueries(["all_customer"]);
-          console.log(data);
-          // setEditingRecord(null);
-        },
-        onError: (err) => {
-          console.log(err);
-        },
-      });
-    }
-  };
+  //   {
+  //     viewCustomerById(customerData, {
+  //       onSuccess: (data) => {
+  //         console.log("Update data successfully");
+  //         queryClient.refetchQueries(["all_customer"]);
+  //         console.log(data);
+  //         // setEditingRecord(null);
+  //       },
+  //       onError: (err) => {
+  //         console.log(err);
+  //       },
+  //     });
+  //   }
+  // };
 
   // const handleDelete = (id) => {
   //   delBanners(id, {

@@ -24,7 +24,7 @@ import styled from "@emotion/styled";
 // import { useGetAllCategory } from "../../../hooks/categories/useGetAllCategory";
 import TableDataGrid from "../../../../src/components/common/customtabels/TableDataGrid";
 import ServiceModal from "../../modal/ServicesModal";
-import { useAllServices } from "../../../../src/hooks/services/useServices";
+// import { useAllServices } from "../../../../src/hooks/services/useServices";
 
 const StyledSwitch = styled(Switch)({
   "& .MuiSwitch-switchBase.Mui-checked": {
@@ -51,11 +51,11 @@ const ServicesTable = () => {
   };
   console.log("ServicesData::::", data);
 
-  useEffect(() => {
-    if (data?.data?.data) {
-      setRows(data?.data?.data);
-    }
-  }, [data?.data?.data]);
+  // useEffect(() => {
+  //   if (data?.data?.data) {
+  //     setRows(data?.data?.data);
+  //   }
+  // }, [data?.data?.data]);
 
   //   const handleEdit = (id) => {
   //     setIsEditMode(true);

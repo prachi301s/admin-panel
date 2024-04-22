@@ -6,7 +6,7 @@ import { useUser } from "./store/StateProvider";
 import { useEffect } from "react";
 import { loginSuccess } from "./store/useAction";
 import Login from "./pages/authPages/Login";
-import CaLayout from "./layout/CaLayout";
+// import CaLayout from "./layout/CaLayout";
 import MainLayout from "./layout/MainLayout";
 
 function App() {
@@ -27,11 +27,11 @@ function App() {
 
   return (
     <>
-      <ThemeProvider>
+      {/* <ThemeProvider>
         {user === null ? (
           <Login />
         ) : (
-          // <PrimaryRoutes/>
+         
           <>
             {user.user_type === '0' ? (
               <MainLayout/>
@@ -40,8 +40,12 @@ function App() {
             )}
           </>
         )}
-        {/* <PrimaryRoutes/> */}
-        {/* <SecondaryRoutes/> */}
+      
+       
+      </ThemeProvider> */}
+      <ThemeProvider>
+        <Login/>
+        <MainLayout/>
       </ThemeProvider>
     </>
   );
