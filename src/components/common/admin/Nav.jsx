@@ -164,12 +164,12 @@ export default function Nav({ openNav, onCloseNav }) {
     onCloseNav();
   };
 
-  useEffect(() => {
-    const userData = localStorage.getItem("user_data");
-    if (userData === null) {
-      navigate("/login");
-    }
-  });
+  // useEffect(() => {
+  //   const userData = localStorage.getItem("user_data");
+  //   if (userData === null) {
+  //     navigate("/login");
+  //   }
+  // });
 
   // logout
   const handleLogout = () => {

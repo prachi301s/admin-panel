@@ -13,17 +13,17 @@ function App() {
   const { user } = useUser();
   const dispatch = useDispatch();
   console.log(user);
-  useEffect(() => {
-    const userData = localStorage.getItem("user_data");
-    if (userData !== null) {
-      const userItem = JSON.parse(userData);
-      // console.log(userItem);
-      // console.log(userItem);
-      if (userItem.id !== null && userItem.user_email_id !== null) {
-        dispatch(loginSuccess(userItem));
-      }
-    }
-  }, [dispatch]);
+  // useEffect(() => {
+  //   const userData = localStorage.getItem("user_data");
+  //   if (userData !== null) {
+  //     const userItem = JSON.parse(userData);
+  //     // console.log(userItem);
+  //     // console.log(userItem);
+  //     if (userItem.id !== null && userItem.user_email_id !== null) {
+  //       dispatch(loginSuccess(userItem));
+  //     }
+  //   }
+  // }, [dispatch]);
 
   return (
     <>
@@ -44,7 +44,7 @@ function App() {
        
       </ThemeProvider> */}
       <ThemeProvider>
-        <Login/>
+        {/* <Login/> */}
         <MainLayout/>
       </ThemeProvider>
     </>

@@ -49,7 +49,7 @@ const ServicesTable = () => {
   const handleAdd = () => {
     setIsModalVisible(true);
   };
-  console.log("ServicesData::::", data);
+  // console.log("ServicesData::::", data);
 
   // useEffect(() => {
   //   if (data?.data?.data) {

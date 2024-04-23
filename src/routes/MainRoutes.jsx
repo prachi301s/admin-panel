@@ -15,7 +15,8 @@ export const PrimaryRoutes = () => {
           <Route
             key={index}
             path={route.path}
-            element={<ProtectedRoute>{route.element}</ProtectedRoute>}
+            element={route.element}
+            // element={<ProtectedRoute>{route.element}</ProtectedRoute>}
           />
         ))}
         {/* {ca_routes.map((route, index) => (
