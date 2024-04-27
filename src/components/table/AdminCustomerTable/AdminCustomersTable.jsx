@@ -20,7 +20,9 @@ const AdminCustomersTable = () => {
   // console.log(data);
   // const { message, success, mutate: delBanners } = useDeleteBanner();
   const queryClient = useQueryClient();
-
+const handleAddCustomer=()=>{
+  setIsModalVisible(true);
+}
   // console.log(data);
 
   // useEffect(() => {
@@ -183,13 +185,13 @@ const AdminCustomersTable = () => {
             onClick={() => handleView(params.row.id)}>
             <Icon icon="solar:eye-bold" />
           </IconButton>
-          {/* <IconButton
+          <IconButton
           style={{ border: 'none', color: theme.palette.secondary.dark }}
           aria-label="edit"
           // onClick={() => handleEdit(params.row.id)}
         >
-          <Icon icon={mdiEditBox} />
-        </IconButton> */}
+          {/* <Icon icon={mdiEditBox} /> */}
+        </IconButton>
           <IconButton
             aria-label="delete"
             // onClick={() => handleDelete(params.row.id)}
@@ -224,7 +226,8 @@ const AdminCustomersTable = () => {
         disableRowSelectionOnClick
         isSearch={true}
         isAdd={true}
-        buttonTitle={"Select"}
+        buttonOnClick={handleAddCustomer}
+        buttonTitle={"Add Customer"}
         // handleSearch={}
       />
     </>

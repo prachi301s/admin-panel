@@ -149,9 +149,9 @@ const WithdrawRequestTable = () => {
       width: 120,
 
       align: "left",
-      renderCell: (params) => {
-        params.total_amount || "--";
-      },
+      // renderCell: (params) => {
+      //   params.total_amount || "--";
+      // },
     },
     // {
     //   field: 'status',
