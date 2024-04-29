@@ -13,10 +13,9 @@ import {
   Select,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-// import { useAddBanner } from "../../hooks/banners/useAddBanner";
-import AddCategoryForm from "../../components/Forms/AddCategoryForm";
+import AddCustomerForm from "../Forms/AddCustomerForm";
 
-export default function AddCategoryModal({
+export default function AddCustomerModal({
   isModalVisible,
   setIsModalVisible,
   isEditMode,
@@ -28,20 +27,6 @@ export default function AddCategoryModal({
     description: "", // Added description to formData
   });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
-//   const { mutate, isLoading, isError, isSuccess } = useAddBanner();
-
-//   useEffect(() => {
-//     if (isSuccess) {
-//       // Reset the form data and set the form submission flag upon successful mutation
-//       setFormData({
-//         event_name: "",
-//         event_date: "",
-//         banner_image: null,
-//         description: "", // Reset description as well
-//       });
-//       setIsFormSubmitted(true);
-//     }
-//   }, [isSuccess]);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -53,14 +38,14 @@ export default function AddCategoryModal({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
+    console.log(formData);
     // Check if all required fields are filled
     // if (
     //   formData.event_name.trim() === "" ||
     //   formData.event_date.trim() === "" ||
     //   formData.banner_image === null
     // ) {
-      // If any required field is empty, return and prevent form submission
+    // If any required field is empty, return and prevent form submission
     //   return;
     // }
     // If all required fields are filled, submit the form
@@ -92,8 +77,7 @@ export default function AddCategoryModal({
             overflowY: "auto", // Added to enable scrolling on small screens
           }}
         >
-        
-          <AddCategoryForm isEdit={isEditMode} closeModal={() => setIsModalVisible(false)}/>
+          <AddCustomerForm />
         </Box>
       </Modal>
     </div>

@@ -9,6 +9,8 @@ import { useQueryClient } from "react-query";
 import { useTheme } from "@emotion/react";
 import { useState } from "react";
 import TableDataGrid from "../../common/customtabels/TableDataGrid";
+import AddCategoryModal from "../../modal/AddCategoryModal";
+import AddCustomerModal from "../../modal/AddCustomerModal";
 // import { useAllCustomer } from "../../../../src/hooks/customer/useCustomer";
 // import { useCustomerById } from "../../../../src/hooks/customer/useCustomerById";
 const AdminCustomersTable = () => {
@@ -20,9 +22,9 @@ const AdminCustomersTable = () => {
   // console.log(data);
   // const { message, success, mutate: delBanners } = useDeleteBanner();
   const queryClient = useQueryClient();
-const handleAddCustomer=()=>{
-  setIsModalVisible(true);
-}
+  const handleAddCustomer = () => {
+    setIsModalVisible(true);
+  };
   // console.log(data);
 
   // useEffect(() => {
@@ -182,16 +184,17 @@ const handleAddCustomer=()=>{
           <IconButton
             style={{ border: "none", color: theme.palette.secondary.dark }}
             aria-label="view"
-            onClick={() => handleView(params.row.id)}>
+            onClick={() => handleView(params.row.id)}
+          >
             <Icon icon="solar:eye-bold" />
           </IconButton>
           <IconButton
-          style={{ border: 'none', color: theme.palette.secondary.dark }}
-          aria-label="edit"
-          // onClick={() => handleEdit(params.row.id)}
-        >
-          {/* <Icon icon={mdiEditBox} /> */}
-        </IconButton>
+            style={{ border: "none", color: theme.palette.secondary.dark }}
+            aria-label="edit"
+            // onClick={() => handleEdit(params.row.id)}
+          >
+            {/* <Icon icon={mdiEditBox} /> */}
+          </IconButton>
           <IconButton
             aria-label="delete"
             // onClick={() => handleDelete(params.row.id)}
@@ -221,6 +224,7 @@ const handleAddCustomer=()=>{
         tableTitle={"All Customers"}
         rowHeight={36}
         columns={columns}
+        icon={"ic:baseline-plus"}
         pageSize={5}
         checkboxSelection
         disableRowSelectionOnClick
@@ -230,6 +234,12 @@ const handleAddCustomer=()=>{
         buttonTitle={"Add Customer"}
         // handleSearch={}
       />
+       {isModalVisible && (
+        <AddCustomerModal
+          isModalVisible={isModalVisible}
+          setIsModalVisible={setIsModalVisible}
+        />
+      )}
     </>
   );
 };

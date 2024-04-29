@@ -12,30 +12,18 @@ import {
   Button,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
-// import { useAddCategory } from "../../hooks/categories/useAddCategory";
-
-function AddCategoryForm({ isEdit, closeModal, setCloseModal }) {
-  // const { mutate: addCategory } = useAddCategory();
-  const { register, handleSubmit, setValue } = useForm();
-
+const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
+  const { handleSubmit, register } = useForm();
   const onSubmit = (data) => {
     console.log(data);
-    // const categoryData={
-    //     category_name:data.category_name,
-    //     image:data.image,
-    //     status:data.status,
-    //     description:data.description
-    // }
-    // console.log(categoryData)
-   
+    let customerData = JSON.parse(localStorage.getItem('cutomer')||[])
+    customerData.push({customerName:data.customer_name, customerEmail:data.customer_email})
+    
   };
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     console.log(file);
-    // setFormData((prevData) => ({
-    //   ...prevData,
-    //   banner_image: file,
-    // }));
+
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -54,7 +42,7 @@ function AddCategoryForm({ isEdit, closeModal, setCloseModal }) {
         </IconButton>
 
         <Typography variant="h3" sx={{ textAlign: "left", color: "black" }}>
-          {isEdit ? "Edit Category" : "Add New Category"}
+          {isEdit ? "Edit Customer" : "Add New Customer"}
         </Typography>
       </Box>
 
@@ -70,11 +58,11 @@ function AddCategoryForm({ isEdit, closeModal, setCloseModal }) {
                 marginBottom: "7px",
               }}
             >
-              Category Name{" "}
+              Customer Name{" "}
             </Typography>
             <TextField
-              {...register("category_name", { required: true })}
-              name="category_name"
+              {...register("customer_name", { required: true })}
+              name="customer_name"
               placeholder="Please Enter Title"
               fullWidth
               size="small"
@@ -193,6 +181,6 @@ function AddCategoryForm({ isEdit, closeModal, setCloseModal }) {
       </Box>
     </form>
   );
-}
+};
 
-export default AddCategoryForm;
+export default AddCustomerForm;
