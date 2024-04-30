@@ -77,7 +77,7 @@ export default function AddCustomerModal({
             overflowY: "auto", // Added to enable scrolling on small screens
           }}
         >
-          <AddCustomerForm />
+          <AddCustomerForm  isEdit={isEditMode} closeModal={() => setIsModalVisible(false)} />
         </Box>
       </Modal>
     </div>

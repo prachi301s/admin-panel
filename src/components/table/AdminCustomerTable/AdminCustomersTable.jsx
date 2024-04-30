@@ -15,24 +15,31 @@ import AddCustomerModal from "../../modal/AddCustomerModal";
 // import { useCustomerById } from "../../../../src/hooks/customer/useCustomerById";
 const AdminCustomersTable = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
-  // const [rows, setRows] = useState([]);
-  // const { data } = useAllCustomer();
-  // const { mutate: viewCustomerById } = useCustomerById();
+  const [rows, setRows] = useState([]);
   const theme = useTheme();
-  // console.log(data);
-  // const { message, success, mutate: delBanners } = useDeleteBanner();
+
+  console.log(rows)
+  
   const queryClient = useQueryClient();
   const handleAddCustomer = () => {
     setIsModalVisible(true);
   };
-  // console.log(data);
 
-  // useEffect(() => {
-  //   if (data?.data?.data?.rows) {
-  //     setRows(data?.data?.data?.rows);
-  //   }
-  // }, [data?.data?.data?.rows]);
-  //   console.log('data.....', data);
+
+  useEffect(() => {
+    let customerData=JSON.parse(localStorage.getItem('customer'))||[];
+    console.log(customerData);
+    if (customerData) {
+      setRows(customerData);
+    }
+  }, []);
+  function getRowId(row) {
+    return row.customerId;
+  }
+  
+
+  
+    // console.log('data.....', data);
 
   // const handleView = (id) => {
   //   console.log(`Editing row with ID ${id}`);
@@ -77,20 +84,20 @@ const AdminCustomersTable = () => {
   // const renderFieldValue = (value) => {
   //   return value !== null ? value : "-";
   // };
-  const renderFieldValue = (field, value) => {
-    if (field === "createdAt" && value !== null) {
-      const date = new Date(value);
-      return date.toLocaleDateString();
-    } else if (value === null) {
-      return "-";
-    } else {
-      return value;
-    }
-  };
+  // const renderFieldValue = (field, value) => {
+  //   if (field === "createdAt" && value !== null) {
+  //     const date = new Date(value);
+  //     return date.toLocaleDateString();
+  //   } else if (value === null) {
+  //     return "-";
+  //   } else {
+  //     return value;
+  //   }
+  // };
 
   const columns = [
     {
-      field: "id",
+      field: "customerId",
       headerName: (
         <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
           ID
@@ -99,10 +106,11 @@ const AdminCustomersTable = () => {
       sortable: true,
       width: 50,
       align: "left",
-      renderCell: (params) => renderFieldValue(params.value),
+      // renderCell: (params) => renderFieldValue(params.value),
+      renderCell:getRowId()
     },
     {
-      field: "name",
+      field: "customerName",
       headerName: (
         <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
           Name
@@ -111,10 +119,10 @@ const AdminCustomersTable = () => {
       sortable: false,
       width: 80,
       align: "left",
-      renderCell: (params) => renderFieldValue(params.value),
+      renderCell: (params) => {console.log(params), renderFieldValue(params.value)}
     },
     {
-      field: "email_id",
+      field: "customerEmail",
       headerName: (
         <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
           Email
@@ -123,13 +131,13 @@ const AdminCustomersTable = () => {
       sortable: false,
       width: 150,
       align: "left",
-      renderCell: (params) => renderFieldValue(params.value),
+      renderCell: (params) => {console.log(params), renderFieldValue(params.value)},
     },
     {
-      field: "otp_verified_at",
+      field: "customerPhone",
       headerName: (
         <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
-          Verification
+         Mobile 
         </Typography>
       ),
       sortable: false,
@@ -137,20 +145,9 @@ const AdminCustomersTable = () => {
       align: "left",
       renderCell: (params) => renderFieldValue(params.value),
     },
+    
     {
-      field: "phone_no",
-      headerName: (
-        <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
-          Mobile
-        </Typography>
-      ),
-      sortable: false,
-      width: 120,
-      align: "left",
-      renderCell: (params) => renderFieldValue(params.value),
-    },
-    {
-      field: "createdAt",
+      field: "customerCreateDate",
       headerName: (
         <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
           Date
@@ -162,18 +159,7 @@ const AdminCustomersTable = () => {
       renderCell: (params) => renderFieldValue("createdAt", params.value),
     },
 
-    {
-      field: "last_seen",
-      headerName: (
-        <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
-          Last Seen
-        </Typography>
-      ),
-      sortable: false,
-      width: 120,
-      align: "left",
-      renderCell: (params) => renderFieldValue(params.value),
-    },
+  
     {
       field: "actions",
       headerName: <Typography variant="subtitle1">Actions</Typography>,
@@ -205,21 +191,22 @@ const AdminCustomersTable = () => {
       ),
     },
   ];
-  const rows = [
-    { id: 1, lastName: "Snow", firstName: "Jon", age: 14 },
-    { id: 2, lastName: "Lannister", firstName: "Cersei", age: 31 },
-    { id: 3, lastName: "Lannister", firstName: "Jaime", age: 31 },
-    { id: 4, lastName: "Stark", firstName: "Arya", age: 11 },
-    { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
-    { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
-    { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
-    { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
-    { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
-  ];
+  // const rows = [
+  //   { id: 1, lastName: "Snow", firstName: "Jon", age: 14 },
+  //   { id: 2, lastName: "Lannister", firstName: "Cersei", age: 31 },
+  //   { id: 3, lastName: "Lannister", firstName: "Jaime", age: 31 },
+  //   { id: 4, lastName: "Stark", firstName: "Arya", age: 11 },
+  //   { id: 5, lastName: "Targaryen", firstName: "Daenerys", age: null },
+  //   { id: 6, lastName: "Melisandre", firstName: null, age: 150 },
+  //   { id: 7, lastName: "Clifford", firstName: "Ferrara", age: 44 },
+  //   { id: 8, lastName: "Frances", firstName: "Rossini", age: 36 },
+  //   { id: 9, lastName: "Roxie", firstName: "Harvey", age: 65 },
+  // ];
 
   return (
     <>
       <TableDataGrid
+      
         rows={rows}
         tableTitle={"All Customers"}
         rowHeight={36}

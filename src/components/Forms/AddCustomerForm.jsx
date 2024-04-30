@@ -14,16 +14,40 @@ import {
 import { Icon } from "@iconify/react";
 const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
   const { handleSubmit, register } = useForm();
+  const d = new Date();
+  // const newObjectId = () => {
+  //   // const timestamp = Math.floor(new Date().getTime() / 1000).toString(16);
+  //   const objectId =
+  //     timestamp +
+  //     "xxxxxxxxxxxxxxxx"
+  //       .replace(/[x]/g, () => {
+  //         return Math.floor(Math.random() * 16).toString(16);
+  //       })
+  //       .toLowerCase();
+
+  //   return objectId;
+  // };
+  const customerId= Math.floor(Math.random() * 16);
+  console.log(customerId);
+  const customerCreateDate= d.getDate();
+  console.log(customerCreateDate);
   const onSubmit = (data) => {
     console.log(data);
-    let customerData = JSON.parse(localStorage.getItem('cutomer')||[])
-    customerData.push({customerName:data.customer_name, customerEmail:data.customer_email})
-    
+    let customerData = JSON.parse(localStorage.getItem("customer")) || [];
+    customerData.push({
+      customerName: data.customer_name,
+      customerEmail: data.customer_email,
+      customerPhone: data.customer_phone,
+      customerImage: data.customer_image,
+      customerDescription: data.customer_description,
+      customerCreateDate: customerCreateDate,
+      customerId: customerId,
+    });
+    localStorage.setItem("customer", JSON.stringify(customerData));
   };
   const handleImageChange = (event) => {
     const file = event.target.files[0];
     console.log(file);
-
   };
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
@@ -63,13 +87,13 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
             <TextField
               {...register("customer_name", { required: true })}
               name="customer_name"
-              placeholder="Please Enter Title"
+              placeholder="Please Enter Name"
               fullWidth
               size="small"
             />
           </Grid>
 
-          <Grid item md={6} xs={12}>
+          <Grid item md={6} xs={12} sm={12}>
             <Typography
               sx={{
                 fontSize: "15px",
@@ -77,21 +101,33 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
                 marginBottom: "7px",
               }}
             >
-              Status
+              Email{" "}
             </Typography>
-            <Select
-              {...register("status", { required: true })}
-              defaultValue="Select"
+            <TextField
+              {...register("customer_email", { required: true })}
+              name="customer_email"
+              placeholder="Please Enter Email"
+              fullWidth
               size="small"
-              fullWidth="true"
+            />
+          </Grid>
+          <Grid item md={6} xs={12} sm={12}>
+            <Typography
+              sx={{
+                fontSize: "15px",
+                color: "gray",
+                marginBottom: "7px",
+              }}
             >
-              <MenuItem value="Select" disabled>
-                <em>Select</em>
-              </MenuItem>
-              <MenuItem value="1">Approved</MenuItem>
-              <MenuItem value="2">Pending</MenuItem>
-              <MenuItem value="3">Reject</MenuItem>
-            </Select>
+              Mobile No.{" "}
+            </Typography>
+            <TextField
+              {...register("customer_phone", { required: true })}
+              name="customer_phone"
+              placeholder="Please Enter Valid Number"
+              fullWidth
+              size="small"
+            />
           </Grid>
           <Grid item md={6} xs={12}>
             <Typography
@@ -126,7 +162,7 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
                   accept="image/*"
                   style={{ display: "none" }}
                   onChange={handleImageChange}
-                  {...register("image", { required: true })}
+                  {...register("customer_image", { required: true })}
                 />
                 <Button
                   variant="text"
@@ -151,7 +187,7 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
               required
               hiddenLabel
               name="description"
-              {...register("description", { required: true })}
+              {...register("customer_description", { required: true })}
               //   onChange={handleChange}
               placeholder="Description"
               fullWidth
@@ -166,7 +202,7 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
           <Grid item md={6} xs={12}>
             <Box sx={{ display: "flex", justifyContent: "left", mt: "1rem" }}>
               <Button
-                onClick={() => setCloseModal(true)}
+                onClick={() => closeModal(true)}
                 sx={{ mr: "1rem", bgcolor: "#2E394B", width: "8rem" }}
                 variant="contained"
               >
