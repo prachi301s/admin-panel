@@ -41,7 +41,7 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
       customerImage: data.customer_image,
       customerDescription: data.customer_description,
       customerCreateDate: customerCreateDate,
-      customerId: customerId,
+      id: customerId,
     });
     localStorage.setItem("customer", JSON.stringify(customerData));
   };

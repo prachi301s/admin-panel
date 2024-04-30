@@ -84,16 +84,16 @@ const AdminCustomersTable = () => {
   // const renderFieldValue = (value) => {
   //   return value !== null ? value : "-";
   // };
-  // const renderFieldValue = (field, value) => {
-  //   if (field === "createdAt" && value !== null) {
-  //     const date = new Date(value);
-  //     return date.toLocaleDateString();
-  //   } else if (value === null) {
-  //     return "-";
-  //   } else {
-  //     return value;
-  //   }
-  // };
+  const renderFieldValue = (field, value) => {
+    if (field === "createdAt" && value !== null) {
+      const date = new Date(value);
+      return date.toLocaleDateString();
+    } else if (value === null) {
+      return "-";
+    } else {
+      return value;
+    }
+  };
 
   const columns = [
     {
@@ -107,7 +107,7 @@ const AdminCustomersTable = () => {
       width: 50,
       align: "left",
       // renderCell: (params) => renderFieldValue(params.value),
-      renderCell:getRowId()
+      // renderCell:getRowId()
     },
     {
       field: "customerName",
@@ -158,7 +158,18 @@ const AdminCustomersTable = () => {
       align: "left",
       renderCell: (params) => renderFieldValue("createdAt", params.value),
     },
-
+    {
+      field: "customerDescription",
+      headerName: (
+        <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
+          Description
+        </Typography>
+      ),
+      sortable: false,
+      width: 150,
+      align: "left",
+      renderCell: (params) => {console.log(params), renderFieldValue(params.value)},
+    },
   
     {
       field: "actions",
