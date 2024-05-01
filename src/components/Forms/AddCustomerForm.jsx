@@ -14,20 +14,8 @@ import {
 import { Icon } from "@iconify/react";
 import { reset } from "numeral";
 const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
-  const { handleSubmit, register } = useForm();
+  const { handleSubmit, register,reset } = useForm();
   const d = new Date();
-  // const newObjectId = () => {
-  //   // const timestamp = Math.floor(new Date().getTime() / 1000).toString(16);
-  //   const objectId =
-  //     timestamp +
-  //     "xxxxxxxxxxxxxxxx"
-  //       .replace(/[x]/g, () => {
-  //         return Math.floor(Math.random() * 16).toString(16);
-  //       })
-  //       .toLowerCase();
-
-  //   return objectId;
-  // };
   const customerId= Math.floor(Math.random() * 16);
   console.log(customerId);
   const customerCreateDate= d.getDate();
@@ -45,7 +33,8 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
       id: customerId,
     });
     localStorage.setItem("customer", JSON.stringify(customerData));
-    reset();
+   reset();
+    // reset({customer_name:"", customer_email:"", customer_description:"",customer_phone:"", customer_image:""});
   };
   const handleImageChange = (event) => {
     const file = event.target.files[0];

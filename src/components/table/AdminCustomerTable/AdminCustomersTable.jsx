@@ -81,7 +81,7 @@ const AdminCustomersTable = () => {
         </Typography>
       ),
       sortable: false,
-      width: 80,
+      width: 180,
       align: "left",
       renderCell: (params) => {
          renderFieldValue(params.value);
