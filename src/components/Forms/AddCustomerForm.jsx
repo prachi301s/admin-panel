@@ -12,6 +12,7 @@ import {
   Button,
 } from "@mui/material";
 import { Icon } from "@iconify/react";
+import { reset } from "numeral";
 const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
   const { handleSubmit, register } = useForm();
   const d = new Date();
@@ -44,6 +45,7 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
       id: customerId,
     });
     localStorage.setItem("customer", JSON.stringify(customerData));
+    reset();
   };
   const handleImageChange = (event) => {
     const file = event.target.files[0];
@@ -90,6 +92,8 @@ const AddCustomerForm = ({ isEdit, closeModal, setCloseModal }) => {
               placeholder="Please Enter Name"
               fullWidth
               size="small"
+              defaultValue=""
+
             />
           </Grid>
 

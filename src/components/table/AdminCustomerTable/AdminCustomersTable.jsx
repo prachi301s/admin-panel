@@ -18,72 +18,36 @@ const AdminCustomersTable = () => {
   const [rows, setRows] = useState([]);
   const theme = useTheme();
 
-  console.log(rows)
-  
+  console.log(rows);
+
   const queryClient = useQueryClient();
   const handleAddCustomer = () => {
     setIsModalVisible(true);
   };
 
-
   useEffect(() => {
-    let customerData=JSON.parse(localStorage.getItem('customer'))||[];
+    let customerData = JSON.parse(localStorage.getItem("customer")) || [];
     console.log(customerData);
     if (customerData) {
       setRows(customerData);
     }
   }, []);
-  function getRowId(row) {
-    return row.customerId;
-  }
-  
-
-  
-    // console.log('data.....', data);
-
+  const handleDelete = (id) => {
+    console.log(id);
+    // let customerData = JSON.parse(localStorage.getItem("customer")) || [];  
+    // let updatedData=customerData.filter(customer => customer.customerId !== id);
+    let updatedRows = rows.filter(row => row.id !== id);
+    console.log(updatedRows)
+    localStorage.setItem("customer", JSON.stringify(updatedRows));
+    setRows(updatedRows);
+  };
+ 
   // const handleView = (id) => {
   //   console.log(`Editing row with ID ${id}`);
   //   const customerData = {
   //     customer_id: id,
   //   };
   //   console.log(customerData);
-
-  //   {
-  //     viewCustomerById(customerData, {
-  //       onSuccess: (data) => {
-  //         console.log("Update data successfully");
-  //         queryClient.refetchQueries(["all_customer"]);
-  //         console.log(data);
-  //         // setEditingRecord(null);
-  //       },
-  //       onError: (err) => {
-  //         console.log(err);
-  //       },
-  //     });
-  //   }
-  // };
-
-  // const handleDelete = (id) => {
-  //   delBanners(id, {
-  //     onSuccess: () => {
-  //       setRows(rows.filter((row) => row.id !== id));
-  //       if (message && message.success) {
-  //         message.success(`Item with ID ${id} has been deleted`);
-  //       }
-  //       queryClient.invalidateQueries("all_banners");
-  //     },
-  //     onError: (error) => {
-  //       console.error("Error deleting feature:", error);
-  //       if (message && message.error) {
-  //         message.error("Failed to delete feature");
-  //       }
-  //     },
-  //   });
-  // };
-
-  // const renderFieldValue = (value) => {
-  //   return value !== null ? value : "-";
-  // };
   const renderFieldValue = (field, value) => {
     if (field === "createdAt" && value !== null) {
       const date = new Date(value);
@@ -119,7 +83,9 @@ const AdminCustomersTable = () => {
       sortable: false,
       width: 80,
       align: "left",
-      renderCell: (params) => {console.log(params), renderFieldValue(params.value)}
+      renderCell: (params) => {
+         renderFieldValue(params.value);
+      },
     },
     {
       field: "customerEmail",
@@ -131,13 +97,15 @@ const AdminCustomersTable = () => {
       sortable: false,
       width: 150,
       align: "left",
-      renderCell: (params) => {console.log(params), renderFieldValue(params.value)},
+      renderCell: (params) => {
+       renderFieldValue(params.value);
+      },
     },
     {
       field: "customerPhone",
       headerName: (
         <Typography variant="subtitle1" sx={{ textTransform: "capitalize" }}>
-         Mobile 
+          Mobile
         </Typography>
       ),
       sortable: false,
@@ -145,7 +113,7 @@ const AdminCustomersTable = () => {
       align: "left",
       renderCell: (params) => renderFieldValue(params.value),
     },
-    
+
     {
       field: "customerCreateDate",
       headerName: (
@@ -168,9 +136,11 @@ const AdminCustomersTable = () => {
       sortable: false,
       width: 150,
       align: "left",
-      renderCell: (params) => {console.log(params), renderFieldValue(params.value)},
+      renderCell: (params) => {
+        renderFieldValue(params.value);
+      },
     },
-  
+
     {
       field: "actions",
       headerName: <Typography variant="subtitle1">Actions</Typography>,
@@ -185,18 +155,20 @@ const AdminCustomersTable = () => {
           >
             <Icon icon="solar:eye-bold" />
           </IconButton>
-          <IconButton
+          {/* <IconButton
             style={{ border: "none", color: theme.palette.secondary.dark }}
             aria-label="edit"
             // onClick={() => handleEdit(params.row.id)}
           >
-            {/* <Icon icon={mdiEditBox} /> */}
-          </IconButton>
+            <Icon icon={mdiEditBox} />
+          </IconButton> */}
           <IconButton
+            style={{ border: "none", color: theme.palette.secondary.dark }}
             aria-label="delete"
-            // onClick={() => handleDelete(params.row.id)}
+            onClick={() => handleDelete(params.row.id)}
           >
-            <Icon icon="mdi:delete" />
+            <Icon icon="material-symbols-light:delete-outline" />
+            {/* <Icon icon="mdi:delete" /> */}
           </IconButton>
         </>
       ),
@@ -217,7 +189,6 @@ const AdminCustomersTable = () => {
   return (
     <>
       <TableDataGrid
-      
         rows={rows}
         tableTitle={"All Customers"}
         rowHeight={36}
@@ -232,7 +203,7 @@ const AdminCustomersTable = () => {
         buttonTitle={"Add Customer"}
         // handleSearch={}
       />
-       {isModalVisible && (
+      {isModalVisible && (
         <AddCustomerModal
           isModalVisible={isModalVisible}
           setIsModalVisible={setIsModalVisible}
